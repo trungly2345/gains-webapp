@@ -1,0 +1,12 @@
+# Java / Spring
+target/
+*.class
+
+# Node / frontend
+node_modules/
+
+# Env files
+.env
+
+# OS
+.DS_Store

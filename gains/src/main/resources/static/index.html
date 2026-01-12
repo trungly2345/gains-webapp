@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Gains App</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <container>
+    <nav class="navbar">
+    <div class="navdiv">
+      <div class="logo"><a href="#">Gainz.IO</a></div>
+
+     
+ 
+  <div class="create-user-card">
+    <h2>Create New User</h2>
+  
+    <form id="user-form" class="center-input-section">
+      <input name="userName" type="text" placeholder="User Name" />
+      <input name="email" type="email" placeholder="Email" />
+      <input name="age" type="number" placeholder="Age" />
+      <input name="gender" type="text" placeholder="Gender" />
+      <input name="bodyweight" type="number" placeholder="Bodyweight (lbs)" />
+      <input name="passWord" type="password" placeholder="Password" />
+  
+      <button class="submit">Submit</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script src="./createUser.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gainsdb
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.orm.jpa: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
