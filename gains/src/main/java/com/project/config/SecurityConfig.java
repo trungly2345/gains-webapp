@@ -7,8 +7,16 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.project.security.JwtAuthenticationFilter;
+
 @Configuration
 public class SecurityConfig {
+
+   private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+  public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+      this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+  }
 
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -17,11 +25,13 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .requestMatchers(HttpMethod.POST, "/users").permitAll()
-            // during dev you can allow everything:
-            .anyRequest().permitAll()
+            .requestMatchers(HttpMethod.POST, "/users", "/auth/login").permitAll()
+            .requestMatchers("/api/public/**").permitAll() 
+             // Temporarily allow everything for easier dev if needed, or lock it down:
+            .anyRequest().authenticated()
         )
-        .httpBasic(httpBasic -> httpBasic.disable()) // disables Basic auth prompt
+        .httpBasic(httpBasic -> httpBasic.disable())
+        .addFilterBefore(jwtAuthenticationFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
         .build();
   }
 }
